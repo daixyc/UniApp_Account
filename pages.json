@@ -32,6 +32,12 @@
 				"navigationBarTitleText": "新增账务"
 			}
         }
+		,{
+		    "path" : "pages/Account/selectAccount",
+		    "style" : {
+				"navigationBarTitleText": "流水查询"
+			}
+		}
     ],
     "tabBar": {
         "color": "#7a7e83",

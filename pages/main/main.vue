@@ -22,7 +22,7 @@
 			<image src="../../static/img/newAcount.png" mode="aspectFit"></image>
 			<text>新加记账</text>
 		</view>
-		<view class="main_liushui image_button" hover-class="button_style">
+		<view class="main_liushui image_button" hover-class="button_style" @click="routerTo('/pages/Account/selectAccount')">
 			<image src="../../static/img/liushui.png" mode="aspectFit"></image>
 			<text>账目查询</text>
 		</view>

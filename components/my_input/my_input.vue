@@ -1,0 +1,137 @@
+<template>
+	<view class="m-input-view">
+		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input-input" :placeholder="placeholder"
+		 :password="type==='password'&&!showPassword" @focus="onFocus" @blur="onBlur" />
+		<!-- 优先显示密码可见按钮 -->
+		<view v-if="clearable_&&!displayable_&&value.length" class="m-input-icon">
+			<!-- <uni-icon class="uni-combox__input-arrow" size="20" color="#666666" type="clear" @click="clear" /> -->
+			<uni-icons type="clear" color="#fff" size="20" />
+		</view>
+		<view v-if="displayable_" class="m-input-icon">
+			<uni-icon class="uni-combox__input-arrow" size="20" :style="{color:showPassword?'#666666':'#cccccc'}" type="eye" @click="display" />
+		</view>
+	</view>
+</template>
+
+<script>
+	import uniIcons from '@/components/uni-icons/uni-icons.vue'
+	export default {
+		components: {
+			uniIcons
+		},
+		props: {
+			/**
+			 * 输入类型
+			 */
+			type: String,
+			/**
+			 * 值
+			 */
+			value: String,
+			/**
+			 * 占位符
+			 */
+			placeholder: String,
+			/**
+			 * 是否显示清除按钮
+			 */
+			clearable: {
+				type: [Boolean, String],
+				default: false
+			},
+			/**
+			 * 是否显示密码可见按钮
+			 */
+			displayable: {
+				type: [Boolean, String],
+				default: false
+			},
+			/**
+			 * 自动获取焦点
+			 */
+			focus: {
+				type: [Boolean, String],
+				default: false
+			}
+		},
+		model: {
+			prop: 'value',
+			event: 'input'
+		},
+		data() {
+			return {
+				/**
+				 * 显示密码明文
+				 */
+				showPassword: false,
+				/**
+				 * 是否获取焦点
+				 */
+				isFocus: false
+			}
+		},
+		computed: {
+			inputType() {
+				const type = this.type
+				return type === 'password' ? 'text' : type
+			},
+			clearable_() {
+				return String(this.clearable) !== 'false'
+			},
+			displayable_() {
+				return String(this.displayable) !== 'false'
+			},
+			focus_() {
+				return String(this.focus) !== 'false'
+			}
+		},
+		methods: {
+			clear() {
+				this.$emit('input', '')
+			},
+			display() {
+				this.showPassword = !this.showPassword
+			},
+			onFocus() {
+				this.isFocus = true
+			},
+			onBlur() {
+				this.$nextTick(() => {
+					this.isFocus = false
+				})
+			},
+			onInput(e) {
+				this.$emit('input', e.target.value)
+			}
+		}
+	}
+</script>
+
+<style>
+	.m-input-view {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		/* width: 100%; */
+		flex: 1;
+		padding: 0 10px;
+	}
+	.m-input-input {
+		flex: 1;
+		width: 100%;
+		min-height: 100%;
+		line-height: inherit;
+		background-color: rgba(0, 0, 0, 0);
+	}
+	.m-input-icon {
+		width: 20px;
+		height: 20px;
+		font-size: 20px;
+		line-height: 20px;
+		color: #666666;
+	}
+	/* .uni-combox__input-arrow {
+		width: 100%;
+		height: 100%;
+	} */
+</style>
