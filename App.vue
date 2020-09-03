@@ -12,7 +12,8 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import "@/uview/uview-ui/index.scss";
 	/*每个页面公共css */
 	page {
 		min-height: 100%;
@@ -69,29 +70,29 @@
 		position: relative;
 	}
 
-	.input-group::before {
-		position: absolute;
-		right: 0;
-		top: 0;
-		left: 0;
-		height: 1upx;
-		content: '';
-		-webkit-transform: scaleY(.5);
-		transform: scaleY(.5);
-		background-color: #c8c7cc;
-	}
+	// .input-group::before {
+	// 	position: absolute;
+	// 	right: 0;
+	// 	top: 0;
+	// 	left: 0;
+	// 	height: 1upx;
+	// 	content: '';
+	// 	-webkit-transform: scaleY(.5);
+	// 	transform: scaleY(.5);
+	// 	background-color: #c8c7cc;
+	// }
 
-	.input-group::after {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		height: 1upx;
-		content: '';
-		-webkit-transform: scaleY(.5);
-		transform: scaleY(.5);
-		background-color: #c8c7cc;
-	}
+	// .input-group::after {
+	// 	position: absolute;
+	// 	right: 0;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	height: 1upx;
+	// 	content: '';
+	// 	-webkit-transform: scaleY(.5);
+	// 	transform: scaleY(.5);
+	// 	background-color: #c8c7cc;
+	// }
 
 	.input-row {
 		display: flex;
@@ -101,7 +102,6 @@
 
 	.input-row .title {
 		width: 20%;
-		height: 50upx;
 		min-height: 50upx;
 		padding: 15upx 0;
 		padding-left: 30upx;

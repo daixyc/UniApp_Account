@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "流水查询",
+  "usingComponents": {
+    "m-table": "/components/t-table/t-table",
+    "t-th": "/components/t-table/t-th",
+    "t-tr": "/components/t-table/t-tr",
+    "t-td": "/components/t-table/t-td"
+  }
+}

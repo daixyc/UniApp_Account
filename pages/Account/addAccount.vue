@@ -2,18 +2,13 @@
 	<view class="content">
 		<view class="account account_money">
 			<text class="label-text">金额</text>
-			<input class="uni-input" type="number" v-model="Info.money" @input="onInputMoney" placeholder="请输入记账金额" />
+			<u-input class="uni-input" type="number" v-model="Info.money" placeholder="请输入记账金额" />
 		</view>
 		<view class="account account_type">
 			<text class="label-text">收支</text>
-			<radio-group @change="radioChange" class="radioInline">
-				<label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in lstType" :key="item.value">
-					<view>
-						<radio :value="item.value" :checked="index === current" />
-					</view>
-					<view>{{item.name}}</view>
-				</label>
-			</radio-group>
+			<u-radio-group class="radioInline" v-model="Info.szType" @change="radioChange">
+				<u-radio class="uni-list-input" v-for="(item, index) in lstType" :key="index" :name="item.name">{{ item.name }}</u-radio>
+			</u-radio-group>
 		</view>
 		<view class="account account_kemu">
 			<text class="label-text">科目</text>
@@ -41,12 +36,12 @@
 		</view>
 		<view class="account account_address">
 			<text class="label-text">地点</text>
-			<input class="uni-input" :value="Info.address" v-model="Info.address" type="text" @input="onInputAddress" placeholder="请输入消费(收入)地点" />
+			<u-input class="uni-input" v-model="Info.address" type="text" @input="onInputAddress" placeholder="请输入消费(收入)地点" />
 		</view>
 		<view class="account account_remark">
 			<text class="label-text">备注</text>
 			<view class="uni-list-cell-db textarea">
-				<textarea v-model="Info.remark" @input="onInputRemark" placeholder="请输入备注"/>
+				<u-input type="textarea" v-model="Info.remark" @input="onInputRemark" placeholder="请输入备注"/>
 			</view>
 		</view>
 		
@@ -108,7 +103,7 @@
 			},
 			radioChange(e) {
 				this.lstType.forEach(type => {
-					if (type.value == e.target.value) {
+					if (type.name == e) {
 						this.current = type.value;
 					}
 				})
@@ -173,16 +168,27 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.content {
 		width: 100%;
 	}
 	.account {
 		margin: 10px 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		border-bottom: 1px #c8c7cc solid;
 	}
 
 	.radioInline {
-		display: inline-block;
+		display: flex;
+		flex-direction: row;
+		
+		
+		.uni-list-input {
+			display: inline-block;
+			margin-right: 10rpx;
+		}
 	}
 
 	.radioInline uni-view,
@@ -210,5 +216,6 @@
 	}
 	.uni-input {
 		overflow: inherit;
+		width: 75%;
 	}
 </style>

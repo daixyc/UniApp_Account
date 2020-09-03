@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
     next();
 })
 
-var url = "mongodb://192.168.40.20:27017/";
+var url = "mongodb://39.106.76.49:27017/";
 
 //注册添加账号
 app.get('/addAccount', function (req, resp) {

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "u-input": "/uview/uview-ui/components/u-input/u-input",
+    "u-radio-group": "/uview/uview-ui/components/u-radio-group/u-radio-group",
+    "u-radio": "/uview/uview-ui/components/u-radio/u-radio"
+  }
+}

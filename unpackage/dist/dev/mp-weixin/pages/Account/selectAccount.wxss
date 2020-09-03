@@ -1,0 +1,30 @@
+
+.account {
+	margin: 10px 0;
+}
+.radioInline {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
+}
+.radioInline .uni-list-cell {
+	display: inline;
+	position: initial;
+}
+.radioInline .radio-view {
+	display: inline-block;
+}
+.time-ward {
+	padding: 0 30px;
+}
+.time-ward .ward-list {
+	display: inline-block;
+}
+.text {
+	display: block;
+	padding: 40px;
+	color: #999999;
+}
+
