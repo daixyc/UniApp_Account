@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import App from './App'
-
 import store from './store'
 import uView from "@/uview/uview-ui";
+import net from "./common/net.js"
 Vue.use(uView);
 
 Vue.config.productionTip = false
 
 Vue.prototype.$store = store
-Vue.prototype.$url = "http://39.106.76.49:5000";
+Vue.prototype.$net = net.net
+Vue.prototype.$url = net.host
 
 App.mpType = 'app'
 

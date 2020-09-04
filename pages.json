@@ -6,6 +6,11 @@
 				"navigationBarTitleText": "我的账本"
 			}
 		}, {
+			"path":"pages/authorizate/authorizate",
+			"style": {
+				"navigationBarTitleText": "授权"
+			}
+		}, {
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "登录"

@@ -10,7 +10,9 @@ const store = new Vuex.Store({
          */
         forcedLogin: false,
         hasLogin: false,
-        userName: ""
+        userName: "",
+				userInfo: uni.getStorageSync("USERINFO"),
+				userId: uni.getStorageSync("USERID"),
     },
     mutations: {
         login(state, userName) {
@@ -20,7 +22,13 @@ const store = new Vuex.Store({
         logout(state) {
             state.userName = "";
             state.hasLogin = false;
-        }
+        },
+				SET_USERINFO(state, userInfo) {
+					state.userInfo = userInfo;
+				},
+				SET_USERID(state, userId) {
+					state.userId = userId;
+				}
     }
 })
 

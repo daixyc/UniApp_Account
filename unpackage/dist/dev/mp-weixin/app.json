@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/main/main",
+    "pages/authorizate/authorizate",
     "pages/login/login",
     "pages/reg/reg",
     "pages/pwd/pwd",
@@ -34,5 +35,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap30.json"
+  "sitemapLocation": "sitemap49.json"
 }

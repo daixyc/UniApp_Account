@@ -10,7 +10,7 @@
 				<u-input class="input-con" v-model="password" type="password" password-icon="true" placeholder="请输入密码" />
 			</view>
 		</view>
-		<view class="btn-row"><u-button type="primary" class="primary" @tap="bindLogin">登录</u-button></view>
+		<view class="btn-row"><u-button type="primary" class="primary" @click="bindLogin">登录</u-button></view>
 		<view class="action-row">
 			<navigator url="../reg/reg">注册账号</navigator>
 			<text>|</text>
@@ -98,51 +98,18 @@ export default {
 				password: this.password
 			};
 			const _this = this;
-			uni.request({
-				url: this.$url + '/login',
-				data: data,
-				method: 'POST',
-				/* header: {
-						// 以下header，在post请求中要使用queryString获取解析参数，其余类型使用JSON解析就可以
-						"content-type": "application/x-www-form-urlencoded" 
-					}, */
-				success(res) {
-					const result = res.data;
-					if (result.code == '200') {
-						uni.showToast({
-							title: '登录成功',
-							content: '正在跳转至首页，请耐心等待',
-							success() {
-								_this.$store.commit('login', data.username);
-								uni.reLaunch({
-									url: '../main/main'
-								});
-							}
-						});
-					} else if (result.code == '400') {
-						uni.showModal({
-							title: '服务异常',
-							content: result.msg
+			_this.$net.post('login', data).then(res => {
+				uni.showToast({
+					title: '登录成功',
+					content: '正在跳转至首页，请耐心等待',
+					success() {
+						_this.$store.commit('login', data.username);
+						uni.reLaunch({
+							url: '../main/main'
 						});
 					}
-				},
-				fail() {
-					uni.showModal({
-						title: '服务器异常，请检查！'
-					});
-				}
-			});
-			/* const validUser = service.getUsers().some(function (user) {
-                    return data.account === user.account && data.password === user.password;
-                });
-                if (validUser) {
-                    this.toMain(this.account);
-                } else {
-                    uni.showToast({
-                        icon: 'none',
-                        title: '用户账号或密码不正确',
-                    });
-                } */
+				});
+			})
 		},
 		oauth(value) {
 			uni.login({

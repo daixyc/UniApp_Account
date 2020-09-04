@@ -152,24 +152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var _vuex = __webpack_require__(/*! vuex */ 12); //
 //
 //
@@ -191,29 +173,43 @@ var _vuex = __webpack_require__(/*! vuex */ 12); //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { computed: (0, _vuex.mapState)(['forcedLogin', 'hasLogin', 'userName']), onLoad: function onLoad() {var _this = this;if (!this.hasLogin) {uni.showModal({ title: '未登录', content: '您未登录，需要登录后才能继续', /**
-                                                                                                                                                                                                                    * 如果需要强制登录，不显示取消按钮
-                                                                                                                                                                                                                    */showCancel: !this.forcedLogin, success: function success(res) {if (res.confirm) {/**
-                                                                                                                                                                                                                                                                                                        * 如果需要强制登录，使用reLaunch方式
-                                                                                                                                                                                                                                                                                                        */if (_this.forcedLogin) {uni.reLaunch({ url: '../login/login' });} else {uni.navigateTo({ url: '../login/login' });}}} });}}, methods: { routerTo: function routerTo(path) {uni.navigateTo({ url: path });} } };exports.default = _default;
+var _default = { computed: (0, _vuex.mapState)(['forcedLogin', 'hasLogin', 'userName']), onLoad: function onLoad() {}, methods: { login: function login() {var _this = this;if (!this.hasLogin) {uni.showModal({ title: '未登录', content: '您未登录，需要登录后才能继续', /**
+                                                                                                                                                                                                                                                           * 如果需要强制登录，不显示取消按钮
+                                                                                                                                                                                                                                                           */showCancel: !this.forcedLogin, success: function success(res) {if (res.confirm) {/**
+                                                                                                                                                                                                                                                                                                                                               * 如果需要强制登录，使用reLaunch方式
+                                                                                                                                                                                                                                                                                                                                               */if (_this.forcedLogin) {uni.reLaunch({ url: '../login/login' });
+
+              } else {
+                uni.navigateTo({
+                  url: '../login/login' });
+
+              }
+            }
+          } });
+
+      }
+    },
+    routerTo: function routerTo(path) {
+      var userInfo = uni.getStorageSync("USERINFO");
+      if (!userInfo) {
+        // 未授权
+        uni.navigateTo({
+          url: '/pages/authorizate/authorizate' });
+
+      } else {
+        // 已授权
+        if (!this.hasLogin) {
+          // 未登录
+          uni.navigateTo({
+            url: '/pages/login/login' });
+
+        } else {
+          uni.navigateTo({
+            url: path });
+
+        }
+      }
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
