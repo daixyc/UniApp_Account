@@ -35,7 +35,8 @@
 .author-wrap ._div ._img.data-v-d23b1e98 {
   width: 180rpx;
   height: 180rpx;
-  border-radius: 200rpx;
+  -webkit-border-radius: 200rpx;
+          border-radius: 200rpx;
   margin: 150rpx 0 70rpx 0;
 }
 .author-wrap ._div ._h5.data-v-d23b1e98 {
@@ -50,8 +51,10 @@
 .author-wrap .author-btn.data-v-d23b1e98 {
   width: 500rpx;
   height: 80rpx;
-  border-radius: 40rpx;
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
   background: -webkit-linear-gradient(left, #ff695a 1%, #d7000f 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(1%, #ff695a), to(#d7000f));
   background: linear-gradient(left, #ff695a 1%, #d7000f 100%);
   border: none;
   color: #ffffff;

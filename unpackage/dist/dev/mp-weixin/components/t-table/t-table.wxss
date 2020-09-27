@@ -4,7 +4,8 @@
 	border: 1px #d0dee5 solid;
 	border-left: none;
 	border-top: none;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .t-table.data-v-e16c6f20 t-tr {
 	display: -webkit-box;

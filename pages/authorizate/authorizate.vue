@@ -7,6 +7,7 @@
 		</div>
 		<div style="display: flex;justify-content: center;width:100%;">
 			<button class="author-btn" lang="zh_CN" open-type="getUserInfo" @getuserinfo="bindGetUserInfo">确认授权</button>
+			<button class="author-btn" lang="zh_CN" open-type="getPhoneNumber" @getuserinfo="getPhoneNumber">确认授权</button>
 		</div>
 	</div>
 	<div v-else>
@@ -90,6 +91,9 @@ export default {
 					}
 				});
 			}
+		},
+		getPhoneNumber: function(e) {
+			console.log("手机号登录", e);
 		},
 		queryUsreInfo: function(params) {
 			uni.login({

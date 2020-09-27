@@ -100,7 +100,8 @@
   width: 40%;
   height: 80px;
   background-color: #fff;
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   line-height: 80px;
   text-align: center;
   font-size: 16px;
